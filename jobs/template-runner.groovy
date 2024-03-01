@@ -1,6 +1,1 @@
-node {
-	stage("RUNNER") {
-		echo ("RUNNER")
-		echo ("NAME: '$name' ")
-	}
-}
+Test File
