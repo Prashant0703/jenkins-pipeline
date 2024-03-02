@@ -4,7 +4,7 @@ node {
 		checkout scm
 	}
 	stage("ARCHIVE") {
-		archiveArtifacts artifacts: 'check.groovy'
+		archiveArtifacts artifacts: 'jobs/**'
 	}
 
 }
