@@ -3,7 +3,7 @@ node {
 		print("HELLO")
 	}
 	stage("ARCHIVE") {
-		archiveArtifacts artifacts: '**'
+		archiveArtifacts artifacts: 'check.groovy'
 	}
 
 }
