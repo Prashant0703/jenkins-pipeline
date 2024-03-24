@@ -1,10 +1,17 @@
-node {
-	stage("TEST") {
-		print("HELLO")
-		checkout scm
+pipeline {
+	agent any
+	
+	environment {
+	        ARTIFACT_DIR = "${env.WORKSPACE}/jobs"
 	}
-	stage("ARCHIVE") {
-		archiveArtifacts artifacts: 'jobs/**'
+	
+	stages {
+		stage("TEST") {
+			print("HELLO")
+			checkout scm
+		}
+		stage("ARCHIVE") {
+			zip dir: "${env.ARTIFACT_DIR}", zipFile: 'jobs.zip', archive: true, glob: ''
+		}
 	}
-
 }
