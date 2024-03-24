@@ -1,7 +1,7 @@
 properties([
      parameters ([
           string(
-               defaultValue:  "${WORKSPACE}/jobs",
+               defaultValue: '${WORKSPACE}/jobs',
                description: 'Package separated by comma you want to install',
                name: 'ARTIFACT_PATH'
           )
