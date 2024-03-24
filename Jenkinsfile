@@ -4,7 +4,7 @@ node {
 		checkout scm
 	}
 	stage("ARCHIVE") {
-		archiveArtifacts artifacts: 'jobs/personal/**'
+		archiveArtifacts artifacts: 'jobs/**'
 	}
 
 }
