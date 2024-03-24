@@ -11,15 +11,16 @@ pipeline {
 	agent any
 	
 	environment {
-	        ARTIFACT_DIR = "${env.WORKSPACE}/jobs"
+	        ARTIFACT_DIR = "${env.ARTIFACT_PATH}"
 	}
 	
 	stages {
 		stage("TEST") {
 			steps {
-				echo "WORKSPACE: ${env.WORKSPACE}"
-				echo "ARTIFACT_PATH: ${env.ARTIFACT_PATH}"
 				checkout scm
+				echo "WORKSPACE: ${WORKSPACE}"
+				echo "ARTIFACT_PATH: ${env.ARTIFACT_PATH}"
+				echo "ARTIFACT_DIR: ${env.ARTIFACT_DIR}"
 			}
 		}
 		// stage("ARCHIVE") {
@@ -30,7 +31,7 @@ pipeline {
 	}
 	post("Artifact") {
 		always {
-			zip dir: "${env.ARTIFACT_PATH}", zipFile: 'jobs.zip', archive: true, glob: '', overwrite: true
+			zip dir: "${env.ARTIFACT_DIR}", zipFile: 'jobs.zip', archive: true, glob: '', overwrite: true
 		}
 	}
 }	
