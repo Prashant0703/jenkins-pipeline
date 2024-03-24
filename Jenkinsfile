@@ -8,7 +8,7 @@ pipeline {
 	stages {
 		stage("TEST") {
 			steps {
-				print(f"WORKSPACE: {env.WORKSPACE}")
+				echo "WORKSPACE: ${env.WORKSPACE}"
 				checkout scm
 			}
 		}
