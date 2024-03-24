@@ -6,7 +6,7 @@ pipeline {
 	}
 	
 	stages {
-		stage("TEST") 
+		stage("TEST") {
 			steps {
 				print("HELLO")
 				checkout scm
@@ -18,4 +18,4 @@ pipeline {
 			}
 		}
 	}
-}
+}	
