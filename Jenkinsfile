@@ -12,10 +12,15 @@ pipeline {
 				checkout scm
 			}
 		}
-		stage("ARCHIVE") {
-			steps {
-				zip dir: "${env.ARTIFACT_DIR}", zipFile: 'jobs.zip', archive: true, glob: ''
-			}
+		// stage("ARCHIVE") {
+		// 	steps {
+		// 		zip dir: "${env.ARTIFACT_DIR}", zipFile: 'jobs.zip', archive: true, glob: ''
+		// 	}
+		// }
+	}
+	post("Artifact") {
+		always {
+			zip dir: "${env.ARTIFACT_DIR}", zipFile: 'jobs.zip', archive: true, glob: ''
 		}
 	}
 }	
