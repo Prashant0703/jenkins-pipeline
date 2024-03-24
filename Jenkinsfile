@@ -8,7 +8,7 @@ pipeline {
 	stages {
 		stage("TEST") {
 			steps {
-				print("HELLO")
+				print(f"WORKSPACE: {env.WORKSPACE}")
 				checkout scm
 			}
 		}
@@ -20,7 +20,7 @@ pipeline {
 	}
 	post("Artifact") {
 		always {
-			zip dir: "${env.ARTIFACT_DIR}", zipFile: 'jobs.zip', archive: true, glob: ''
+			zip dir: "${env.ARTIFACT_DIR}", zipFile: 'jobs.zip', archive: true, glob: '', overwrite: true
 		}
 	}
 }	
