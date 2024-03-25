@@ -23,11 +23,13 @@ pipeline {
 				echo "ARTIFACT_DIR: ${env.ARTIFACT_DIR}"
 			}
 		}
-		// stage("ARCHIVE") {
-		// 	steps {
-		// 		zip dir: "${env.ARTIFACT_DIR}", zipFile: 'jobs.zip', archive: true, glob: ''
-		// 	}
-		// }
+		stage("CREATE") {
+			steps {
+				script {
+					mkdir "${ARTIFACT_PATH}"
+				}
+			}
+		}
 	}
 	post("Artifact") {
 		always {
