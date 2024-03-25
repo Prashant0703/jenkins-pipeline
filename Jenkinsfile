@@ -26,14 +26,16 @@ pipeline {
 		stage("CREATE") {
 			steps {
 				script {
-					mkdir "${ARTIFACT_PATH}"
+					"""
+						mkdir -p ${ARTIFACT_PATH}
+      					"""
 				}
 			}
 		}
 	}
 	post("Artifact") {
 		always {
-			zip dir: "${env.ARTIFACT_DIR}", zipFile: 'jobs.zip', archive: true, glob: '', overwrite: true
+			zip dir: "${env.ARTIFACT_PATH}", zipFile: 'jobs.zip', archive: true, glob: '', overwrite: true
 		}
 	}
 }	
