@@ -22,14 +22,10 @@ pipeline {
 		}
 		stage("CREATE") {
 			steps {
-				script {
-					"""
-     					echo "WORKSPACE: ${WORKSPACE}"
-					echo "ARTIFACT_PATH: ${env.ARTIFACT_PATH}"
-					echo "ARTIFACT_DIR: ${env.ARTIFACT_DIR}"
-					mkdir -p ${ARTIFACT_PATH}
-      					"""
-				}
+				echo "WORKSPACE: ${WORKSPACE}"
+				echo "ARTIFACT_PATH: ${env.ARTIFACT_PATH}"
+				echo "ARTIFACT_DIR: ${env.ARTIFACT_DIR}"
+				sh 'mkdir -p ${ARTIFACT_PATH}'
 			}
 		}
 	}
